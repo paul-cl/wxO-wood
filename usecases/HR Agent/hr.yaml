@@ -4,7 +4,7 @@ info:
   description: API for retrieving employee details and updating profile information
   version: 1.0.0
 servers:
-- url: https://hr-skills.1znlbot06r7m.us-south.codeengine.appdomain.cloud
+- url: https://hr-skills.20815xbp1zf0.us-south.codeengine.appdomain.cloud
   description: Production server
 tags: []
 paths:
