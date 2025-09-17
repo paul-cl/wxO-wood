@@ -195,8 +195,30 @@ What is the pet policy?
 ```
 Show me my profile data.
 ```
+이름은 다음 목록중 하나를 선택해서 사용하시면 됩니다.
 ```
 Victoria Baker
+```
+```
+Daniel Anderson
+```
+```
+Sean Lang
+```
+```
+John Smith
+```
+```
+Tony Tanner
+```
+```
+Kevin Kelley
+```
+```
+Beth Carter
+```
+```
+John Garcia
 ```
 ```
 I'd like to update my title. 
