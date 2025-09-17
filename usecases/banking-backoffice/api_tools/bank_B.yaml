@@ -1,0 +1,269 @@
+openapi: 3.0.3
+info:
+  title: GFM Bank Unified Tool APIs
+  version: 1.0.0
+  description: Unified API combining multiple banking services
+  x-disclaimer: |-
+    IBM SAMPLE CODE DISCLAIMER
+    © Copyright IBM Corporation 2025. All Rights Reserved.
+
+    This sample code is provided solely for instructional use in IBM lab exercises. It is supplied “AS IS,” without warranties of any kind, express or implied, including (but not limited to) warranties of merchantability, fitness for a particular purpose, and non-infringement. IBM makes no commitment to update the code and assumes no responsibility for errors or omissions or for any damages arising out of its use.
+
+    You may copy, modify, and distribute this code in whole or in part, at your own risk, provided you retain this notice. The code is not part of any IBM product and is not officially supported by IBM. Use in production environments is entirely at your discretion and must comply with all applicable laws, regulations, and third-party license terms.
+
+    IBM, the IBM logo, and ibm.com are trademarks or registered trademarks of International Business Machines Corporation. Other product and service names might be trademarks of IBM or other companies.
+servers:
+  - url: https://bank-backoffice.20eugik541t0.us-south.codeengine.appdomain.cloud
+    description: Production Endpoint
+paths:
+  /iban-transfer:
+    post:
+      summary: Transfer money between IBANs
+      description: Takes source IBAN, destination IBAN, and amount as input and performs a money transfer.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source_iban:
+                  type: string
+                  example: DE89320895326389021994
+                destination_iban:
+                  type: string
+                  example: DE89929842579913662103
+                amount_eur:
+                  type: number
+                  example: 100.5
+                username:
+                  type: string
+                  default: teller
+                password:
+                  type: string
+                  default: teller123
+              required:
+                - source_iban
+                - destination_iban
+                - amount_eur
+      responses:
+        '200':
+          description: Transfer completed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  source_iban:
+                    type: string
+                  destination_iban:
+                    type: string
+                  amount_eur:
+                    type: number
+                  debit_tx:
+                    type: string
+                  credit_tx:
+                    type: string
+                  timestamp:
+                    type: string
+                  new_balance_eur:
+                    type: number
+        '401':
+          description: Authentication failed
+          content:
+            application/json:
+              example:
+                detail: Bad credentials
+        '403':
+          description: Insufficient funds
+          content:
+            application/json:
+              example:
+                detail: Insufficient funds. Balance X, overdraft Y
+        '404':
+          description: IBAN not found
+          content:
+            application/json:
+              example:
+                detail: Source or destination IBAN not found
+  /balance-inquiry:
+    post:
+      summary: Check account balance by IBAN
+      description: Takes an IBAN and returns current balance and recent transactions.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                iban:
+                  type: string
+                  example: DE89320895326389021994
+                username:
+                  type: string
+                  default: teller
+                password:
+                  type: string
+                  default: teller123
+              required:
+                - iban
+      responses:
+        '200':
+          description: Balance inquiry successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  iban:
+                    type: string
+                  account_id:
+                    type: string
+                  current_balance_eur:
+                    type: number
+                  overdraft_limit_eur:
+                    type: number
+                  available_balance_eur:
+                    type: number
+                  recent_transactions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        transaction_id:
+                          type: string
+                        account_id:
+                          type: string
+                        booking_ts:
+                          type: string
+                        amount_eur:
+                          type: number
+                        type:
+                          type: string
+        '401':
+          description: Authentication failed
+          content:
+            application/json:
+              example:
+                detail: Bad credentials
+        '404':
+          description: IBAN not found
+          content:
+            application/json:
+              example:
+                detail: IBAN not found
+  /fee-reversal:
+    post:
+      summary: Process a fee reversal to an account
+      description: Takes an IBAN and amount, then posts a fee reversal transaction.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                iban:
+                  type: string
+                  example: DE89320895326389021994
+                  description: The IBAN of the account to process the fee reversal for
+                amount_eur:
+                  type: number
+                  example: 50
+                  description: The amount to reverse in EUR
+              required:
+                - iban
+                - amount_eur
+      responses:
+        '200':
+          description: Fee reversal processed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  iban:
+                    type: string
+                  customer_name:
+                    type: string
+                  amount_eur:
+                    type: number
+                  transaction_id:
+                    type: string
+                  booking_ts:
+                    type: string
+                  new_balance_eur:
+                    type: number
+                  message:
+                    type: string
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              example:
+                detail: Invalid amount
+        '404':
+          description: IBAN not found
+          content:
+            application/json:
+              example:
+                detail: IBAN not found
+  /approve-overdraft:
+    post:
+      summary: Approve or modify overdraft limit for an account
+      description: Takes an IBAN and overdraft amount, then sets the specified overdraft limit.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                iban:
+                  type: string
+                  example: DE89320895326389021994
+                  description: The IBAN of the account to set the overdraft limit for
+                overdraft_limit_eur:
+                  type: number
+                  minimum: 0
+                  maximum: 10000
+                  example: 5000
+                  description: The overdraft limit to set (between 0 and 10,000 EUR)
+              required:
+                - iban
+                - overdraft_limit_eur
+      responses:
+        '200':
+          description: Overdraft limit updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account_id:
+                    type: string
+                  iban:
+                    type: string
+                  customer_name:
+                    type: string
+                  overdraft_limit_eur:
+                    type: number
+                  message:
+                    type: string
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              example:
+                detail: Overdraft limit must be between 0 and 10,000 EUR
+        '404':
+          description: IBAN not found
+          content:
+            application/json:
+              example:
+                detail: IBAN not found

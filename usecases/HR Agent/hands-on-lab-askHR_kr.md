@@ -92,7 +92,7 @@
 1. **에이전트 스타일** 섹션에서 **기본값**을 선택합니다.
    - **Default**
       모델이 본래 가지고 있는 이해, 계획, 도구 및 지식 호출 능력에 의존합니다.
-   - **ReACt**
+   - **ReAct**
       모델이 과제를 완료할 때까지 생각하고, 행동하고, 관찰하며, 접근 방식을 다듬을 수 있도록 합니다.
 
    <img width="1000" alt="image" src="hands-on-lab-assets/step_5_v2.png">
@@ -137,7 +137,7 @@
 
    <img width="1000" alt="image" src="hands-on-lab-assets/step_9_v3.png">
 
-1. **가져오기**를 선택합니다:
+1. **Add from file or MCP server**를 선택합니다(화면 이미지와 명칭이 다를수 있습니다.):
 
    <img width="1000" alt="image" src="hands-on-lab-assets/step_10_v3.png">
 
