@@ -21,7 +21,7 @@
 시스템 내에서 에이전트를 구성하여 조직의 특정 요구사항을 충족할 수 있습니다. 주어진 설명에 따라, 해당 작업을 수행할 수 있는 에이전트가 선택됩니다.  
 각 에이전트는 함수 호출을 지원하는 대규모 언어 모델(LLM)에 연결되어 있으며, 각 도구의 설명에 따라 하나 이상의 도구를 활용할 수 있습니다.
 
-이번 시나리오에서는 Dock 상태(Dock Status Agent), 잉여 재고 처리(Surplus Agent), 비서 기능(Secretary Agent), 교통 정보 에이전트(Traffic Agent), 창고 관리자 에이전트(Warehouse Manager Agent)를 생성하고, 모두 "라우팅 에이전트"에 연결합니다. 라우팅 에이전트는 최종 사용자의 요청을 받아 적절한 에이전트를 선택한 후 응답을 반환합니다.  
+이번 시나리오에서는 Dock 상태(Dock Status Agent), 잉여 재고 처리(Surplus Agent), 비서 기능(Secretary Agent), 교통 정보 에이전트(Traffic Agent), 창고 관리자 에이전트(Warehouse Manager Agent)를 생성하고, 모두 창고 관리자 에이전트("라우팅 에이전트")에 연결합니다. 라우팅 에이전트는 최종 사용자의 요청을 받아 적절한 에이전트를 선택한 후 응답을 반환합니다.  
 시뮬레이션되는 상호작용 흐름은 창고 관리자가 Dock 상태를 확인하고, 잉여 재고 처리에 대한 권장 사항을 요청하며, 관련 이해관계자에게 알리고, 창고 주변 교통 상황을 확인하는 과정입니다.
 
 완전한 에이전트 솔루션은 높은 수준의 자율성을 보여줄 수 있습니다. 특정 문제를 해결하거나 요청을 처리할 때, 에이전트는 계획을 세우고 실행하며, 결과를 평가하고 필요시 계획을 수정합니다. 이는 자동으로 수행되며 인간의 개입 없이 진행됩니다. 위의 흐름에 적용하면, "사람이 개입하는 과정"을 제거하고 시스템이 Dock 상태를 분석하고, 잉여 재고 처리 방법을 결정하고, 이해관계자에게 알리고, 기록 시스템을 업데이트하도록 할 수 있습니다. 동시에 "사람이 개입하는 과정"을 유지하여, 창고 관리자가 각 단계를 실행하며 각 에이전트의 응답을 확인할 수도 있습니다.
@@ -87,7 +87,7 @@ watsonx Orchestrate와 대화하여 어떤 답변을 제공하는지 탐색해 �
    ```
    Juheon_DockStatusAgent
    ```
-- 설명 : "생성한 에이전트명" <- 자신이 만든 에이전트 명을 작성합니다.
+- 설명 : "생성한 에이전트명" <- 자신이 만든 에이전트 명으로 변경 합니다.
 
 ```
 The 생성한 에이전트명 specializes in answering inquiries about current warehouse dock status. It has access to detailed and up-to-date data about which trucks are loading and unloading at docks, and information about the products they carry, and return detailed textual information about this data to the user.
@@ -255,7 +255,7 @@ Dock Status Agent 옆에 초록색 "Live" 아이콘이 표시되면 성공적으
    ```
    Juheon_SurplusAgent
    ```
-- 설명 : "생성한 에이전트명" <- 자신이 만든 에이전트 명을 작성합니다.
+- 설명 : "생성한 에이전트명" <- 자신이 만든 에이전트 명으로 변경 합니다.
 ```
 The 생성한 에이전트명 provides recommendations about the handling of surplus data. It has access to data including the allocation strategy, product SKU and total cost for the surplus on each truck, and it returns information about the recommended handling of surplus.
 ```
@@ -376,7 +376,7 @@ Connections 리스트는 비워두고, `Deploy`를 다시 클릭합니다.
    ```
    Juheon_SecretaryAgent
    ```
-- 설명 : "생성한 에이전트명" <- 자신이 만든 에이전트 명을 작성합니다.
+- 설명 : "생성한 에이전트명" <- 자신이 만든 에이전트 명으로 변경 합니다.
     ```
     The 생성한 에이전트명 specializes in creating emails related to warehouse topics. 
     ```
@@ -484,7 +484,7 @@ Generate a notification email for the marketing team for SKU: 8932464599 of 10 u
    ```
    Juheon_AskWarehouseManager
    ```
-- 설명 : "생성한 에이전트명" <- 자신이 만든 에이전트 명을 작성합니다.
+- 설명 : "생성한 에이전트명" <- 자신이 만든 에이전트 명으로 변경 합니다.
     ```
     The 생성한 에이전트명 is in charge of routing user requests to the most relevant agent working under it.
     ```
@@ -536,7 +536,7 @@ Generate a notification email for the marketing team for SKU: 8932464599 of 10 u
     ```
     Juheon_TrafficAgent
     ```
-  - 설(Description of agent capabilities) : "생성한 에이전트명" <- 자신이 만든 에이전트 명을 작성합니다.
+  - 설(Description of agent capabilities) : "생성한 에이전트명" <- 자신이 만든 에이전트 명으로 변경 합니다.
     ```
     The 생성한 에이전트명 agent provides information about traffic in any given location.
     ```
