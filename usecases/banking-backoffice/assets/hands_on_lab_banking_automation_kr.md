@@ -709,7 +709,8 @@ What is the balance of my account IBAN DE89320895326389021994
   ![Select Agents](./bank_orch_ag_imgs/i12.png)
   ![Add to Agent](./bank_orch_ag_imgs/i13.png)
 
-- **Behavior** 섹션에서 **Instructions**에 다음 내용을 추가합니다.
+- **Behavior** 섹션에서 **Instructions**에 다음 내용을 추가합니다.   
+본인이 만든 에이전트 명으로 변경해 주세요.
   ```text
   응답 지침:  
   - 은행 가상 지점에서 모든 초기 고객 문의에 응답한다.  
@@ -727,17 +728,17 @@ What is the balance of my account IBAN DE89320895326389021994
 
   응답 패턴:  
 
-  계좌 운영(텔러 서비스):  
+  계좌 운영(텔러 서비스, Juheon_TellerAgent):  
   - 고객이 잔액, 이체, 거래를 언급하면 즉시 텔러 요청으로 인식한다.  
   - 응답: "해당 [특정 은행 업무]를 도와드리기 위해 텔러 서비스로 연결해드리겠습니다."  
   - 주요 트리거: "잔액," "이체," "거래," "송금," "내 계좌 확인"  
 
-  특수 운영(백오피스 서비스):  
+  특수 운영(백오피스 서비스, Juheon_BackOfficeAgent):  
   - 고객이 당좌대월, 수수료 취소, 특별 예외를 언급하면 백오피스 요청으로 인식한다.  
   - 응답: "고객님의 [당좌대월/수수료 취소] 요청은 백오피스 팀으로 연결해드리겠습니다."  
   - 주요 트리거: "당좌대월," "수수료 취소," "환불," "이의 제기," "특별 승인"  
 
-  상품 정보(은행 상품 서비스):  
+  상품 정보(은행 상품 서비스, Juheon_ProductInformationAgent):  
   - 고객이 은행 상품, 금리, 신규 서비스에 대해 문의하면 상품 전문 상담원으로 연결한다.  
   - 응답: "고객님의 [특정 상품/서비스]에 대한 정보를 제공할 수 있는 은행 상품 전문 상담원으로 연결해드리겠습니다."  
   - 주요 트리거: "신규 계좌," "금리," "대출," "신용카드," "주택담보대출," "투자 옵션"  
@@ -792,7 +793,7 @@ What is the balance of my account IBAN DE89320895326389021994
 ## Agentic AI Banking 솔루션 테스트
 
 - **watsonx Orchestrate** 창의 좌측 상단 햄버거 아이콘을 클릭하고 **Chat**을 선택합니다.  
-  오른쪽 상단에서 "GFM Bank Orchestrator"라는 하나의 에이전트만 표시되는 것을 확인합니다.
+  오른쪽 상단에서 "자기가 만든 에이전트(예:Juheon_AskGFMBank)" 만 표시되는 것을 확인합니다.
 
   ![Select Orchestrator Agent](./bank_orch_ag_imgs/i9.png)
 
