@@ -11,20 +11,20 @@
   - [사전 준비 사항](#사전-준비-사항)
   - [실습 단계 개요](#실습-단계-개요)
 - [할당받은 Watsonx Orchestrate 인스턴스에 연결](#할당받은-watsonx-orchestrate-인스턴스에-연결)
-- [GFM 백오피스 에이전트](#gfm-백오피스-에이전트)
+- [GFM 백오피스 에이전트(예:Juheon_BackOfficeAgent)](#gfm-백오피스-에이전트예juheon_backofficeagent)
   - [GFM 백오피스 에이전트 생성](#gfm-백오피스-에이전트-생성)
   - [GFM 백오피스 에이전트 테스트 및 배포](#gfm-백오피스-에이전트-테스트-및-배포)
-- [GFM 텔러 에이전트](#gfm-텔러-에이전트)
+- [GFM 텔러 에이전트(예:Juheon_TellerAgent)](#gfm-텔러-에이전트예juheon_telleragent)
   - [GFM 텔러 에이전트 생성](#gfm-텔러-에이전트-생성)
   - [GFM 텔러 에이전트 테스트 및 배포](#gfm-텔러-에이전트-테스트-및-배포)
-- [GFM 상품 정보(Product Information) 에이전트](#gfm-상품-정보product-information-agent)
+- [GFM 상품 정보 에이전트(예:Juheon_ProductInformationAgent)](#gfm-상품-정보-agent-예juheon_productinformationagent)
   - [GFM 상품 정보 에이전트 생성](#gfm-상품-정보-에이전트-생성)
   - [GFM 상품 정보 에이전트 테스트 및 배포](#gfm-상품-정보-에이전트-테스트-및-배포)
-- [GFM 은행 오케스트레이터 에이전트](#gfm-은행-오케스트레이터-에이전트)
-  - [GFM 은행 오케스트레이터 에이전트 생성](#gfm-은행-오케스트레이터-에이전트-생성)
+- [GFM 은행 오케스트레이터 에이전트(예:Juheon_AskGFMBank)](#gfm-bank-orchestrator-agent-예juheon_askgfmbank)
+  - [GFM 은행 오케스트레이터 에이전트 생성](#gfm-bank-orchestrator-agent-생성)
   - [협업 에이전트 추가](#협업-에이전트-추가)
   - [GFM 은행 오케스트레이터 에이전트 테스트 및 배포](#gfm-은행-오케스트레이터-에이전트-테스트-및-배포)
-- [에이전트 AI 뱅킹 솔루션 테스트](#에이전트-ai-뱅킹-솔루션-테스트)
+- [에이전트 AI 뱅킹 솔루션 테스트](#gfm-bank-orchestrator-agent-테스트-및-배포)
 - [🎉 실습 완료!](#-실습-완료)
 - [📚 참고 자료](#-참고-자료)
 
@@ -125,7 +125,7 @@ AI 기반 시스템에서는:
 
   ![Agent Builder](./images/i3.png)
 
-### GFM 백오피스 에이전트
+### GFM 백오피스 에이전트(예:Juheon_BackOfficeAgent)
 
 이 에이전트는 GFM Bank의 특수 은행 업무를 처리하며, 당좌 대월 승인이나 수수료 환불 처리와 같이 높은 권한이 필요한 작업을 수행합니다. GFM Bank 운영 센터에서 운영됩니다.
 
@@ -236,15 +236,13 @@ AI 기반 시스템에서는:
 
 ![Deploy agent](./backoffice_ag_imgs/i13.png)
 
-### GFM 텔러 에이전트
+
+
+
+
+### GFM 텔러 에이전트(예:Juheon_TellerAgent)
 
 이 에이전트는 고객의 일상적인 은행 업무(잔액 조회, 송금 등)를 지원합니다. 요청된 사항에 대해서만 응답하며, 가정이나 사전 행동은 수행하지 않습니다.
-
-
-
-
-
-
 
 #### GFM Teller Agent 생성하기
 
@@ -400,7 +398,7 @@ What is the balance of my account IBAN DE89320895326389021994
 
 
 
-### GFM 상품 정보(Product Information) Agent
+### GFM 상품 정보 Agent (예:Juheon_ProductInformationAgent)
 
 이 에이전트는 GFM 은행에서 제공하는 모든 금융 상품과 서비스에 대한 신뢰할 수 있는 전문가 역할을 합니다.  
 고객이 제공되는 금융 솔루션을 명확하고 정확하게 탐색하고 이해할 수 있도록 도와줍니다.
@@ -604,7 +602,7 @@ What is the balance of my account IBAN DE89320895326389021994
 
 
 
-### GFM Bank Orchestrator Agent
+### GFM Bank Orchestrator Agent (예:Juheon_AskGFMBank)
 
 이 에이전트는 GFM Bank의 가상 프런트 데스크 역할을 수행하며, 고객을 환영하고 요구사항을 파악하며, 원활하고 전문적인 경험을 위해 적절한 전문가와 연결합니다.
 
@@ -710,7 +708,7 @@ What is the balance of my account IBAN DE89320895326389021994
   ![Add to Agent](./bank_orch_ag_imgs/i13.png)
 
 - **Behavior** 섹션에서 **Instructions**에 다음 내용을 추가합니다.   
-본인이 만든 에이전트 명으로 변경해 주세요.
+  - **주의사항** : 본인이 만든 에이전트 명으로 변경해 주세요.(예:Juheon_TellerAgent, Juheon_ProductInformationAgent, Juheon_BackOfficeAgent )
   ```text
   응답 지침:  
   - 은행 가상 지점에서 모든 초기 고객 문의에 응답한다.  
@@ -767,7 +765,7 @@ What is the balance of my account IBAN DE89320895326389021994
 
   ![Agent Behavior](./bank_orch_ag_imgs/i7.png)
 
-#### GFM Bank Orchestrator Agent(예:Juheon_AskGFMBank) 테스트 및 배포
+#### GFM Bank Orchestrator Agent 테스트 및 배포
 
 - 오른쪽 미리보기 창에서 다음 질의를 테스트합니다:
   ```
