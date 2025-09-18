@@ -817,10 +817,9 @@ What is the balance of my account IBAN DE89320895326389021994
   ```
   ```
   I want to request an overdraft of 4000 euros for my account IBAN DE89320895326389021994
-  ```
-  ```
   Please approve an overdraft of 4000 EURO for my account IBAN DE89320895326389021994
   ```
+  ![Text Queries](./bank_orch_ag_imgs/i14.png)
   ```
   What's the balance of my account IBAN DE89320895326389021994
   ```
@@ -828,7 +827,7 @@ What is the balance of my account IBAN DE89320895326389021994
   ![Text Queries](./images/i36.png)
 
 - **Teller Agent**에서의 **Back Office Agent** 기능 예시.   
-  아래 예제를 수행하면 TellerAgent에서 BackOfficeAgent로 처리를 위임해서 요청하는 예제를 확인할 수 있습니다.
+  아래 예제를 수행하면 TellerAgent에서 BackOfficeAgent로 처리를 위임해서 요청하는 예제를 확인할 수 있습니다. 4000 EURO를 송급했다가 취소하고, 처리 이력에 대한 정보를 내 계좌 IBAN(International Bank Account Number)에서 확인합니다.
 
   ```
   I want to transfer 4000 EURO from IBAN DE89320895326389021994 to IBAN DE89929842579913662103
@@ -836,7 +835,8 @@ What is the balance of my account IBAN DE89320895326389021994
   ```
   Oh, I made a mistake, can you do a reversal of my previous 4000 EURO payment to my IBAN DE89320895326389021994
   ```
-  ![Text Queries](./bank_orch_ag_imgs/i14.png)
+
+  ![alt text](./images/i37-1.png)
 
 ## 🎉 축하합니다! 실습 완료!
 
