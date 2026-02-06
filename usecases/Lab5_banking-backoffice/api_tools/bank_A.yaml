@@ -13,7 +13,7 @@ info:
 
     IBM, the IBM logo, and ibm.com are trademarks or registered trademarks of International Business Machines Corporation. Other product and service names might be trademarks of IBM or other companies.
 servers:
-  - url: https://bank-backoffice.24fz1t9x1i7d.us-south.codeengine.appdomain.cloud
+  - url: https://bank-backoffice.25ygm6n8q5fm.us-south.codeengine.appdomain.cloud
     description: Production Endpoint
 paths:
   /iban-transfer:
